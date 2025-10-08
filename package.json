@@ -1,0 +1,23 @@
+{
+  "name": "midsommar-preview",
+  "version": "1.0.0",
+  "description": "Página estilo Apple TV para preview do filme Midsommar com players YouTube/Vimeo/HLS.",
+  "scripts": {
+    "dev": "gulp dev",
+    "build": "gulp build",
+    "clean": "gulp clean"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.29.3",
+    "del": "^7.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^9.0.0",
+    "gulp-clean-css": "^4.4.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^3.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-terser": "^2.1.0",
+    "sass": "^1.77.0"
+  }
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apple TV — Preview do Filme • Midsommar</title>
+  <meta name="description" content="Página de preview do filme Midsommar no estilo Apple TV. YouTube/Vimeo/HLS, sinopse, elenco e carrosséis." />
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="stylesheet" href="./styles/main.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="logo" href="#" aria-label="Página inicial Apple TV">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.67 12.98c-.02-2.2 1.8-3.25 1.88-3.3-1.03-1.5-2.65-1.7-3.23-1.72-1.37-.14-2.68.8-3.38.8-.7 0-1.78-.78-2.94-.76-1.51.02-2.9.89-3.67 2.26-1.57 2.73-.4 6.74 1.11 8.95.74 1.07 1.6 2.26 2.74 2.22 1.1-.04 1.51-.72 2.84-.72s1.7.72 2.86.7c1.18-.02 1.92-1.1 2.64-2.18.83-1.21 1.17-2.38 1.19-2.44-.02-.01-2.28-.88-2.26-3.81zM16.88 5.6c.6-.73 1-1.76.89-2.78-.86.03-1.94.6-2.57 1.33-.56.65-1.04 1.69-.91 2.68.96.07 1.95-.49 2.59-1.23z"/></svg>
+        <span>TV</span>
+      </a>
+      <nav class="nav" aria-label="Navegação">
+        <a href="#" aria-current="page">Assistir</a>
+        <a href="#">Originals</a>
+        <a href="#">Filmes</a>
+        <a href="#">Séries</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero / Player -->
+  <section class="hero" aria-label="Trailer e informações principais">
+    <div class="backdrop" aria-hidden="true"></div>
+    <div class="scrim" aria-hidden="true"></div>
+
+    <div class="player" id="player" style="position:absolute; inset:0; z-index:1; display:flex; align-items:center; justify-content:center;">
+      <!-- Players gerenciados por JS: YouTube, Vimeo ou HLS -->
+      <div id="ytContainer" style="display:none; width:min(100%,1200px); aspect-ratio:16/9; max-height:80vh;">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1Vnghdsjmd0?si=xE9DR4nnCKuLb_-3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div id="vimeoContainer" style="display:none; width:min(100%,1200px); aspect-ratio:16/9; max-height:80vh;">
+        <iframe id="vimeoFrame" width="100%" height="100%" src="" title="Vimeo trailer" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <video id="hlsVideo" style="display:none; width:min(100%,1200px); max-height:80vh; border-radius:12px;" controls playsinline poster="https://upload.wikimedia.org/wikipedia/pt/7/7f/Midsommar_2019.png"></video>
+    </div>
+
+    <div class="content">
+      <span class="badge" title="Distribuição A24">Filme • A24</span>
+      <h1 class="title">Midsommar</h1>
+      <div class="meta" role="list">
+        <span role="listitem">2h 27min</span>
+        <span class="dot">•</span>
+        <span role="listitem">Terror • Folk Horror</span>
+        <span class="dot">•</span>
+        <span role="listitem">18+</span>
+        <span class="dot">•</span>
+        <span role="listitem">Dolby Vision • Atmos</span>
+        <span class="dot">•</span>
+        <span role="listitem">2019</span>
+      </div>
+
+      <div class="cta-row">
+        <div class="segmented" role="group" aria-label="Selecionar player" id="playerSelector">
+          <button aria-pressed="true" data-src="youtube">YouTube</button>
+          <button aria-pressed="false" data-src="vimeo">Vimeo</button>
+          <button aria-pressed="false" data-src="hls">HLS</button>
+        </div>
+        <button class="btn btn-primary" id="playBtn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          Reproduzir
+        </button>
+        <button class="btn btn-ghost" id="upNextBtn" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 5v14m-7-7h14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          Adicionar à Fila
+        </button>
+      </div>
+
+      <div class="quick-actions">
+        <button id="shareBtn" title="Compartilhar">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 8a3 3 0 1 0-2.83-2H9a3 3 0 1 0 0 2h6.17A3 3 0 0 0 18 8zM6 16a3 3 0 1 0 2.83 2H15a3 3 0 1 0 0-2H8.83A3 3 0 0 0 6 16z"/></svg>
+          Compartilhar
+        </button>
+        <span class="tag">Disponível em 4K HDR</span>
+        <span class="tag">Acessibilidade: AD • CC</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="grid" id="conteudo">
+    <div class="cols">
+      <section class="card" aria-labelledby="sinopse-h">
+        <div class="pad">
+          <h3 id="sinopse-h">Sinopse</h3>
+          <p class="synopsis">Após sofrer uma tragédia familiar, Dani acompanha o namorado e os amigos em uma viagem para um festival de verão que acontece uma vez a cada 90 anos em uma remota aldeia sueca. O que começa como um retiro idílico se transforma rapidamente em um ritual perturbador e violento.</p>
+          <div class="inline-kv">
+            <div><strong>Direção:</strong> <span class="muted">Ari Aster</span></div>
+            <div><strong>Roteiro:</strong> <span class="muted">Ari Aster</span></div>
+            <div><strong>Estreia:</strong> <span class="muted">2019</span></div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="card" aria-labelledby="info-h">
+        <div class="pad">
+          <h3 id="info-h">Informações</h3>
+          <div class="inline-kv">
+            <span class="tag">Classificação: 18+</span>
+            <span class="tag">Legenda • PT-BR, EN</span>
+            <span class="tag">Áudio • PT-BR, EN</span>
+            <span class="tag">Dolby Vision</span>
+            <span class="tag">Dolby Atmos</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="card" aria-labelledby="elenco-h">
+      <div class="pad">
+        <div class="row">
+          <h3 id="elenco-h">Elenco e Equipe</h3>
+          <div class="segmented" role="group" aria-label="Filtrar">
+            <button aria-pressed="true" data-filter="cast">Elenco</button>
+            <button aria-pressed="false" data-filter="crew">Equipe</button>
+          </div>
+        </div>
+          <p class="synopsis">Florence Pugh - Dani<br/>Jack Reynor - Christian<br/>Will Poulter - Mark<br/>William Jackson Harper - Josh<br/>Vilhelm Blomgren
+ - Pelle</p>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="extras-h">
+      <div class="pad">
+        <div class="row"><h3 id="extras-h">Trailers e Extras</h3></div>
+        <div class="carousel" role="list">
+          <article class="tile" role="listitem">
+            <img alt="Teaser do festival" src="https://raw.githubusercontent.com/nayghtmare/projeto4/refs/heads/main/trailer.jpg" />
+            <span class="label">Teaser</span>
+          </article>
+          <article class="tile" role="listitem">
+            <img alt="Maipole ao centro da vila" src="https://raw.githubusercontent.com/nayghtmare/projeto4/refs/heads/main/ritual.jpg" />
+            <span class="label">Cena: O Ritual</span>
+          </article>
+          <article class="tile" role="listitem">
+            <img alt="Aldeia na luz do dia" src="https://raw.githubusercontent.com/nayghtmare/projeto4/refs/heads/main/bastidores.jpg" />
+            <span class="label">Bastidores</span>
+          </article>
+                    <article class="tile" role="listitem">
+            <img alt="Aldeia na luz do dia" src="https://raw.githubusercontent.com/nayghtmare/projeto4/refs/heads/main/elenco.jpg" />
+            <span class="label">Elenco</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="semelhantes-h">
+      <div class="pad">
+        <div class="row"><h3 id="semelhantes-h">Você também pode gostar</h3></div>
+        <div class="carousel" role="list">
+          <a class="tile" role="listitem" href="#"><img alt="Filme semelhante 1" src="https://raw.githubusercontent.com/nayghtmare/projeto4/refs/heads/main/blair.jpg" /><span class="label">A Bruxa de Blair</span></a>
+          <a class="tile" role="listitem" href="#"><img alt="Filme semelhante 2" src="https://raw.githubusercontent.com/nayghtmare/projeto4/refs/heads/main/hereditary.jpg" /><span class="label">Hereditário</span></a>
+          <a class="tile" role="listitem" href="#"><img alt="Filme semelhante 3" src="https://raw.githubusercontent.com/nayghtmare/projeto4/refs/heads/main/mother.jpg" /><span class="label">Mother!</span></a>
+          <a class="tile" role="listitem" href="#"><img alt="Filme semelhante 4" src="https://raw.githubusercontent.com/nayghtmare/projeto4/refs/heads/main/the_witch.jpg" /><span class="label">A Bruxa</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2025 — Página de exemplo não oficial inspirada no design Apple TV.</span>
+      <span><a href="#">Termos</a> • <a href="#">Privacidade</a> • <a href="#">Suporte</a></span>
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</body>
+</html>
