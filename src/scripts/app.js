@@ -42,7 +42,7 @@ function startPlayer(src) {
   hideAll();
   if (src === "youtube") {
     ytContainer.style.display = "block";
-    ytFrame.src = `https://www.youtube.com/embed/${YT_ID}?autoplay=1&rel=0`;
+    ytFrame.src = `https://www.youtube.com/embed/1Vnghdsjmd0?si=xE9DR4nnCKuLb_-3`;
   } else if (src === "vimeo") {
     vimeoContainer.style.display = "block";
     vimeoFrame.src = `https://player.vimeo.com/video/${VIMEO_ID}?autoplay=1`;
@@ -119,38 +119,6 @@ upNextBtn.addEventListener("click", () => {
     ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 5v14m-7-7h14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg> Adicionar à Fila'
     : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2l-3.5-3.5-1.4 1.4L9 19 20.3 7.7l-1.4-1.4z"/></svg> Adicionado';
 });
-
-// Elenco / Equipe (dados)
-const elenco = [
-  { nome: "Florence Pugh", papel: "Dani", foto: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&h=400&auto=format&fit=crop" },
-  { nome: "Jack Reynor", papel: "Christian", foto: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=400&h=400&auto=format&fit=crop" },
-  { nome: "Vilhelm Blomgren", papel: "Pelle", foto: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=400&h=400&auto=format&fit=crop" },
-  { nome: "William Jackson Harper", papel: "Josh", foto: "https://images.unsplash.com/photo-1549388604-817d15aa0110?q=80&w=400&h=400&auto=format&fit=crop" },
-  { nome: "Will Poulter", papel: "Mark", foto: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&h=400&auto=format&fit=crop" },
-  { nome: "Ari Aster", papel: "Direção", crew: true, foto: "https://images.unsplash.com/photo-1545996124-0501ebae84d5?q=80&w=400&h=400&auto=format&fit=crop" },
-  { nome: "Patrick Andersson", papel: "Produção", crew: true, foto: "https://images.unsplash.com/photo-1531123414780-f742024376ef?q=80&w=400&h=400&auto=format&fit=crop" },
-  { nome: "Pawel Pogorzelski", papel: "Fotografia", crew: true, foto: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=400&h=400&auto=format&fit=crop" }
-];
-
-function renderPessoas(tipo = "cast") {
-  const grid = $("#castGrid");
-  grid.innerHTML = "";
-  const items = elenco.filter((p) => (tipo === "cast" ? !p.crew : !!p.crew));
-  for (const p of items) {
-    const el = document.createElement("div");
-    el.className = "person";
-    el.setAttribute("role", "listitem");
-    el.innerHTML = `
-      <div class="avatar"><img alt="${p.nome}" src="${p.foto}"/></div>
-      <div>
-        <h4>${p.nome}</h4>
-        <p>${p.papel}</p>
-      </div>
-    `;
-    grid.appendChild(el);
-  }
-}
-renderPessoas("cast");
 
 // Toggle elenco/equipe
 $$(".segmented button").forEach((btn) => {

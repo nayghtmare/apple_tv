@@ -10,7 +10,7 @@ const bs = require("browser-sync").create();
 const gulpIf = require("gulp-if");
 
 const paths = {
-  html: "src/*.html",
+  html: "index.html",
   styles: "src/styles/styles.scss",
   scripts: "src/scripts/app.js",
   assets: "src/assets/**/*"
